@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>HealthConnect Auth</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+<style>
+:root{--primary:#4facfe;--secondary:#00f2fe;--card:#fff}
+*{box-sizing:border-box;font-family:Segoe UI}
+body{margin:0;min-height:100vh;background:linear-gradient(to right,var(--primary),var(--secondary));display:flex;align-items:center;justify-content:center}
+.container{background:var(--card);padding:40px;border-radius:20px;width:95%;max-width:520px;box-shadow:0 10px 30px rgba(0,0,0,.2)}
+h2{text-align:center;color:#4facfe}
+.tabs{display:flex;gap:10px;margin-bottom:20px}
+.tabs button{flex:1;padding:12px;border:none;border-radius:10px;cursor:pointer;font-weight:600;background:#eee}
+.tabs button.active{background:#4facfe;color:#fff}
+.form{display:none;flex-direction:column;gap:15px}
+.form.active{display:flex}
+input,select,textarea{padding:12px;border-radius:10px;border:1px solid #ccc}
+.btn{background:#4facfe;color:white;border:none;padding:14px;border-radius:12px;font-weight:bold;cursor:pointer}
+.btn:hover{background:#00f2fe}
+.otp-box{display:flex;gap:10px}
+.otp-box input{flex:1}
+</style>
+</head>
+<body>
+<div class="container">
+<h2>HealthConnect</h2>
+<div class="tabs">
+<button id="loginTab" class="active">Login</button>
+<button id="registerTab">Register</button>
+</div>
+
+<!-- LOGIN FORM -->
+<form id="loginForm" class="form active">
+<input type="email" id="loginEmail" placeholder="Enter Email" required>
+<div class="otp-box">
+<input type="text" id="loginOtp" placeholder="Enter OTP" required>
+<button type="button" onclick="sendOtp('login')">Send OTP</button>
+</div>
+<button class="btn" type="submit">Login</button>
+</form>
+
+<!-- REGISTER FORM -->
+<form id="registerForm" class="form">
+<input type="text" placeholder="Full Name" required>
+<input type="email" id="regEmail" placeholder="Email" required>
+<div class="otp-box">
+<input type="text" id="regOtp" placeholder="Enter OTP" required>
+<button type="button" onclick="sendOtp('register')">Send OTP</button>
+</div>
+<input type="tel" placeholder="Phone Number" required>
+<select required>
+<option value="">Donation Type</option>
+<option>Blood</option>
+<option>Plasma</option>
+<option>Organ</option>
+<option>Medicine</option>
+<option>Clothes</option>
+<option>Money</option>
+</select>
+<input type="text" placeholder="Location" required>
+<textarea placeholder="Notes"></textarea>
+<button class="btn" type="submit">Register</button>
+</form>
+</div>
+
+<script>
+const loginTab=document.getElementById('loginTab');
+const registerTab=document.getElementById('registerTab');
+const loginForm=document.getElementById('loginForm');
+const registerForm=document.getElementById('registerForm');
+
+loginTab.onclick=()=>{loginTab.classList.add('active');registerTab.classList.remove('active');loginForm.classList.add('active');registerForm.classList.remove('active');}
+registerTab.onclick=()=>{registerTab.classList.add('active');loginTab.classList.remove('active');registerForm.classList.add('active');loginForm.classList.remove('active');}
+
+function sendOtp(type){
+alert('OTP sent to '+(type==='login'?document.getElementById('loginEmail').value:document.getElementById('regEmail').value));
+}
+</script>
+</body>

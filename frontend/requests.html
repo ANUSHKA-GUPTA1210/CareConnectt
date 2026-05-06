@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Request Help | CareConnect</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="header">
+    <h1>Request Help</h1>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="donor-requests.html">Donor Notifications</a>
+    </nav>
+  </header>
+
+  <main>
+    <main>
+  <section class="form-section">
+    <h2>Patient Help Request Form</h2>
+    <p class="form-subtitle">
+      Please submit valid medical details. Requests are verified before reaching donors.
+    </p>
+
+    <form id="patientRequestForm" onsubmit="createRequest(event)">
+
+      <input type="text" id="patientName" placeholder="Patient Full Name" required>
+
+      <input type="number" id="patientAge" placeholder="Patient Age" required>
+
+      <input type="text" id="bloodTypeNeeded" placeholder="Blood Group Needed (e.g. A+)" required>
+
+      <input type="text" id="hospitalName" placeholder="Hospital Name" required>
+
+      <textarea id="medicalReason" placeholder="Medical condition / reason for request" required></textarea>
+
+      <input type="number" id="amountNeeded" placeholder="Amount Required (₹)" required>
+
+      <input type="tel" id="contactNumber" placeholder="Contact Number" required>
+
+      <label class="upload-label">Upload Medical Proof</label>
+      <input type="file" id="medicalProof" accept=".pdf,.jpg,.jpeg,.png" required>
+
+      <button type="submit" class="btn-primary">
+        Submit Request for Verification
+      </button>
+
+    </form>
+
+    <p id="requestMsg"></p>
+  </section>
+</main>
+
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
